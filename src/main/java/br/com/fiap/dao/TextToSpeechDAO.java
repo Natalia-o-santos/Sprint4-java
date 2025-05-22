@@ -28,7 +28,7 @@ public class TextToSpeechDAO {
 
     public String atualizar(TextToSpeech tts) throws SQLException {
         PreparedStatement stmt = minhaConexao.prepareStatement(
-                "UPDATE TEXT_TO_SPEECH SET IDOMA_TRADUZIDO = ?, IDOMA_FALADO = ? "
+                "UPDATE TEXT_TO_SPEECH SET IDIOMA_TRADUZIDO = ?, IDIOMA_FALADO = ? "
         );
         stmt.setString(1, tts.getIdomaTraduzido());
         stmt.setString(2, tts.getIdomaFalado());
@@ -39,7 +39,7 @@ public class TextToSpeechDAO {
 
     public String deletar(String idiomaTraduzido) throws SQLException {
         PreparedStatement stmt = minhaConexao.prepareStatement(
-                "DELETE FROM TEXT_TO_SPEECH WHERE IDOMA_TRADUZIDO = ?"
+                "DELETE FROM TEXT_TO_SPEECH WHERE IDIOMA_TRADUZIDO = ?"
         );
         stmt.setString(1, idiomaTraduzido);
         stmt.execute();
@@ -53,8 +53,8 @@ public class TextToSpeechDAO {
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             TextToSpeech tts = new TextToSpeech();
-            tts.setIdomaTraduzido(rs.getString("IDOMA_TRADUZIDO"));
-            tts.setIdomaFalado(rs.getString("IDOMA_FALADO"));
+            tts.setIdomaTraduzido(rs.getString("IDIOMA_TRADUZIDO"));
+            tts.setIdomaFalado(rs.getString("IDIOMA_FALADO"));
             lista.add(tts);
         }
         return lista;

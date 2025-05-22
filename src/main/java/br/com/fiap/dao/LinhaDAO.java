@@ -29,7 +29,7 @@ public class LinhaDAO {
 
     public String atualizar(Linha linha) throws SQLException {
         PreparedStatement stmt = minhaConexao.prepareStatement(
-                "UPDATE LINHA SET NOME = ?, COR = ? WHERE ID_LINHA = ?"
+                "UPDATE LINHA SET NOME_LINHA = ?, COR = ? WHERE ID_LINHA = ?"
         );
         stmt.setString(1, linha.getNome());
         stmt.setString(2, linha.getCor());
@@ -56,7 +56,7 @@ public class LinhaDAO {
         while (rs.next()) {
             Linha l = new Linha();
             l.setIdLinha(rs.getInt("ID_LINHA"));
-            l.setNome(rs.getString("NOME"));
+            l.setNome(rs.getString("NOME_LINHA"));
             l.setCor(rs.getString("COR"));
             lista.add(l);
         }
